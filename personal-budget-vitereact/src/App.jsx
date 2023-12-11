@@ -20,39 +20,29 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
 
 const theme = createTheme({
-  typography: {
-    fontFamily: 'Montserrat, sans-serif',
-  },
   palette: {
     primary: {
-      main: '#2196f3', // Blue
-      contrastText: '#fff', // White text on primary
+      main: '#FF4081', // Pink
     },
     secondary: {
-      main: '#ff5722', // Deep Orange
-      contrastText: '#fff', // White text on secondary
-    },
-    background: {
-      default: '#f8f8f8', // Light Grey
-      paper: '#fff', // White
-    },
-    text: {
-      primary: '#333', // Dark Grey
-      secondary: '#666', // Medium Grey
-    },
-    success: {
-      main: '#4caf50', // Green
+      main: '#4CAF50', // Green
     },
     error: {
-      main: '#f44336', // Red
+      main: '#FF5722', // Deep Orange
     },
-    warning: {
-      main: '#ff9800', // Amber
+    success: {
+      main: '#00BCD4', // Cyan
     },
     info: {
-      main: '#2196f3', // Blue
+      main: '#2196F3', // Blue
+    },
+    warning: {
+      main: '#FFEB3B', // Yellow
     },
   },
+  typography: {
+    fontFamily: ['Poppins', 'Helvetica', 'Arial', 'sans-serif'].join(','),
+  }
 });
 
 
