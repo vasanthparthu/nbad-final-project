@@ -19,7 +19,6 @@ const initialRows = [];
 
 function EditToolbar(props) {
   const { setRows, setRowModesModel } = props;
-
   const handleClick = () => {
     const id = JSON.parse(localStorage.getItem("user"))._id;
     setRows((oldRows) => [
@@ -41,7 +40,7 @@ function EditToolbar(props) {
   );
 }
 
-export default function BudgetsPage() {
+export default function Budgets() {
   const [rows, setRows] = useState(initialRows);
   const [rowModesModel, setRowModesModel] = useState({});
 
@@ -107,7 +106,7 @@ export default function BudgetsPage() {
       const updatedRow = { ...newRow };
       delete updatedRow.isNew;
 
-      fetch("http://localhost:3000/expenses/", {
+      fetch("http://localhost:3000/budgets/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -115,8 +114,8 @@ export default function BudgetsPage() {
         },
         body: JSON.stringify(updatedRow),
       })
-        .then((response) => response.json())
-
+          .then((response) => response.json())
+          
         .then((data) => {
           console.log(data);
           setRows(rows.map((row) => (row.id === newRow.id ? data : row)));
@@ -128,7 +127,7 @@ export default function BudgetsPage() {
       const updatedRow = { ...newRow };
       console.log(updatedRow);
 
-      fetch(`http://localhost:3000/expenses/${newRow._id}`, {
+      fetch(`http://localhost:3000/budgets/${newRow._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
