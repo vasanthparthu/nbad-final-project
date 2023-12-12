@@ -57,7 +57,7 @@ function App() {
     let timer;
 
     if (token) {
-      const expirationTime = new Date().getTime() + 3600000; 
+      const expirationTime = new Date().getTime() + 60000; 
       const remaining = expirationTime - new Date().getTime();
       console.log(expirationTime, new Date().getTime(), remaining);
       setRemainingTime(remaining);
@@ -78,23 +78,23 @@ function App() {
 
   const handleStayLoggedIn = async () => {
     // Handle user choosing to stay logged in
-    try {
       // Implement any necessary actions to refresh the token or extend the session
-      const response = await fetch("http://127.0.0.1:3000/users/refreshToken", {
+      fetch("http://127.0.0.1:3000/users/refreshToken", {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },
-      });
-      console.log("response", response);
-      const newToken = response.token;
-      localStorage.setItem("token", newToken);
-      setShowDialog(false);
-      console.log("Token refreshed", showDialog);
-    } catch (err) {
-      setShowDialog(false);
-      navigate("/login");
-      console.log("Error refreshing token:", err);
-      alert("Error refreshing token. Redirect to login page", err);
-    }
+      }).then((response0) => response.json())
+      .then((response) => {
+        console.log("response", response);
+        const newToken = response.token;
+        localStorage.setItem("token", newToken);
+        setShowDialog(false);
+        console.log("Token refreshed", showDialog);
+      }).catch((err) => {
+        setShowDialog(false);
+        navigate("/login");
+        console.log("Error refreshing token:", err);
+        alert("Error refreshing token. Redirect to login page", err);
+      })
   };
 
   const handleLogout = () => {
