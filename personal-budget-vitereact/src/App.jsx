@@ -82,7 +82,7 @@ function App() {
       fetch("http://127.0.0.1:3000/users/refreshToken", {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },
-      }).then((response0) => response.json())
+      }).then((response) => response.json())
       .then((response) => {
         console.log("response", response);
         const newToken = response.token;
